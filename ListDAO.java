@@ -7,6 +7,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 public class ListDAO {
 
 	public List<EmployeesDTO> getList() {
@@ -56,7 +59,24 @@ public class ListDAO {
 	public static void main(String[] args) {
 		// TODO 自動生成されたメソッド・スタブ
 		ListDAO ldao = new ListDAO();
+		List<EmployeesDTO> list = new ArrayList<EmployeesDTO>();
+		list = ldao.getList();
 		System.out.println(ldao.getList());
+
+		for (int i = 0; i < list.size(); i++) {
+			EmployeesDTO data = list.get(i);
+			// JSON変換用のクラス
+	        ObjectMapper mapper = new ObjectMapper();
+
+	        try {
+	            //JSON文字列に変換
+	            String json = mapper.writeValueAsString(data);
+	            System.out.println(json);
+	        } catch (JsonProcessingException e) {
+	            e.printStackTrace();
+	        }
+		}
+
 	}
 
 }
