@@ -11,7 +11,7 @@ public class ConnectionManager {
 
 		final static String DRIVER = "com.mysql.cj.jdbc.Driver";
 
-		final static String URL = "jdbc:mysql://localhost/test?serverTimezone=JST&useUnicode=true&characterEncoding=utf8";
+		final static String URL = "jdbc:mysql://localhost/test?serverTimezone=JST&useUnicode=true&characterEncoding=utf-8";
 
 		final static String USER = "root";
 

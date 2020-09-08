@@ -29,7 +29,7 @@ public class EmployeesDTO {
 		this.name = name;
 	}
 	public String getDepartment() {
-		return name;
+		return department;
 	}
 	public void setDepartment(String department) {
 		this.department = department;

@@ -1,7 +1,7 @@
 package employee_list;
 
 import java.io.IOException;
-import java.util.List;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,23 +15,19 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "list", urlPatterns = "/list")
 public class ListServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		perform(request, response);
+//		// TODO Auto-generated method stub
+		response.setContentType("application/json");
+        response.setCharacterEncoding("utf-8");
+        ListDAO ldao = new ListDAO();
+        PrintWriter out = response.getWriter();
+        out.print(ldao.getJson());
+        out.flush();
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		perform(request, response);
-	}
-
-
-	protected void perform(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ListDAO ldao = new ListDAO();
-
-		List<EmployeesDTO> list = ldao.getList();
-		request.setAttribute("list", list);
-		request.getRequestDispatcher("/index.jsp").forward(request, response);
-	}
+//	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//		 TODO Auto-generated method stub
+//		perform(request, response);
+//	}
 
 
 }

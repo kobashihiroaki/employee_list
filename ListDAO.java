@@ -55,14 +55,12 @@ public class ListDAO {
 		return list;
 	}
 
-
-	public static void main(String[] args) {
-		// TODO 自動生成されたメソッド・スタブ
+	public ArrayList<String> getJson() {
 		ListDAO ldao = new ListDAO();
 		List<EmployeesDTO> list = new ArrayList<EmployeesDTO>();
 		list = ldao.getList();
-		System.out.println(ldao.getList());
 
+		ArrayList<String> json = new ArrayList<String>();
 		for (int i = 0; i < list.size(); i++) {
 			EmployeesDTO data = list.get(i);
 			// JSON変換用のクラス
@@ -70,12 +68,21 @@ public class ListDAO {
 
 	        try {
 	            //JSON文字列に変換
-	            String json = mapper.writeValueAsString(data);
-	            System.out.println(json);
+	            String jsonData = mapper.writeValueAsString(data);
+	            json.add(jsonData);
 	        } catch (JsonProcessingException e) {
 	            e.printStackTrace();
 	        }
 		}
+		return json;
+	}
+
+
+	public static void main(String[] args) {
+		// TODO 自動生成されたメソッド・スタブ
+		ListDAO ldao = new ListDAO();
+
+		System.out.println(ldao.getJson());
 
 	}
 
